@@ -4,7 +4,7 @@ score = 0
 
 
 def is_very_long(password):
-    return 2 if len(password) > 12 else 0
+    return 2 if len(password) >= 12 else 0
 
 
 def has_digit(password):
