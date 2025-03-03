@@ -1,6 +1,6 @@
-password = input("Введите пароль: ")
 
-score = 0
+
+import string
 
 
 def is_very_long(password):
@@ -20,19 +20,26 @@ def has_lower_letters(password):
 
 
 def has_symbols(password):
-    return 2 if any(i == "%" or i == "#"  for i in password) else 0 
+    return 2 if any(i in string.punctuation for i in password) else 0 
 
 
-funk = [
-    is_very_long, 
-    has_digit, 
-    has_upper_letters, 
-    has_lower_letters,
-    has_symbols,
-]
+def main():
+    password = input("Введите пароль: ")
+    score = 0
 
-for i in funk:
-    score += i(password)
+    funk = [
+        is_very_long, 
+        has_digit, 
+        has_upper_letters, 
+        has_lower_letters,
+        has_symbols,
+    ]
+
+    for i in funk:
+        score += i(password)
+
+    print('Рейтинг пароля:', score)
 
 
-print('Рейтинг пароля:', score)
+if __name__ == "__main__":
+    main()
